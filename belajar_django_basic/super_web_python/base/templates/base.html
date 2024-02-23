@@ -1,10 +1,31 @@
-<!-- base/templates/base/base.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Base Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- Include Tailwind CSS and Daisy UI stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'css/daisyui.css' %}">
 </head>
-<body>
-    <h1>Welcome to the Base Page</h1>
+<body class="font-sans">
+    <header>
+        <!-- Include your site navigation here -->
+        {% block header %}{% endblock %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Include your footer content here -->
+        {% block footer %}{% endblock %}
+    </footer>
+
+    <!-- Include HTMX library -->
+    <script src="{% static 'js/htmx.js' %}"></script>
+    <!-- Your additional scripts go here -->
+    {% block scripts %}{% endblock %}
 </body>
 </html>

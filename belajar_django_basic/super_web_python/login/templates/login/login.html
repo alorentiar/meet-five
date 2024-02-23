@@ -1,10 +1,18 @@
-<!-- login/templates/login/login.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>login Page</title>
-</head>
-<body>
-    <h1>Welcome to the login Page</h1>
-</body>
-</html>
+{% extends 'base_layout.html' %}
+
+{% block title %}Login - My Site{% endblock %}
+
+{% block content %}
+    <h2>Login</h2>
+    <form id="loginForm" hx-post="{% url 'login' %}" hx-target="#loginForm">
+        {% csrf_token %}
+        <!-- Include form fields and submit button -->
+        {% include 'authentication/login_form_fields.html' %}
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Additional scripts for authentication interactions -->
+    <script src="{% static 'js/authentication.js' %}"></script>
+{% endblock %}
